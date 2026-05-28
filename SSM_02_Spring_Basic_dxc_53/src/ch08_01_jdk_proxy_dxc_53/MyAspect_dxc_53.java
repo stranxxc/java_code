@@ -1,0 +1,13 @@
+package ch08_01_jdk_proxy_dxc_53;
+
+public class MyAspect_dxc_53 {
+	
+	public static void before(){
+		System.out.println("---------前增强---------");
+	}
+	
+	public static void after(){
+		System.out.println("---------后增强---------");
+	}
+
+}

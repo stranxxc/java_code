@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ch01_01_get_user_count_dxc_53.User_dxc_53_record_Mapper">
+	<!-- 功能：多条件查询，实现方式二：使用Mapper传参数 -->
+	<!-- 当传入为map时，要求使用的键名与占位符名称要一致。 -->
+
+<!-- 功能：演示forEach，第一种array -->
+	<select id="getUserList_by_userId_in_foreach_11_array_dxc" parameterType="java.util.Arrays" resultType="ch01_01_get_user_count_dxc_53.User_dxc_53_record">
+		select a.user_id as userId,a.user_name as
+		userName,a.user_sfzh
+		from user_dxc_53_record a where a.user_id
+		in
+		<foreach collection="array" item="user_id" separator="," open="(" close=")">
+			#{user_id}
+		</foreach>
+		(1,2,3,4)
+		and a,userName like '%'+#{userName}+'%'
+	</select>
+
+
+<!-- 演示foreach用法，第二种list -->
+<select id="getUserList_by_userId_in_foreach_03_map_test_13_dxc" parameterType="map" resultType="ch01_01_get_user_count_dxc_53.User_dxc_53_record">
+		select a.user_id as userId,a.user_name as
+		userName,a.user_sfzh
+		from user_dxc_53_record a where a.user_id
+		in
+		<foreach collection="array" item="user_id" separator="," open="(" close=")">
+			#{user_id}
+		</foreach>
+		(1,2,3,4)
+	</select>
+
+	<!-- 功能：演示forEach，第一种array -->
+	<select id="getUserList_by_userId_in_foreach_11_array_dxc" parameterType="java.util.Arrays" resultType="ch01_01_get_user_count_dxc_53.User_dxc_53_record">
+		select a.user_id as userId,a.user_name as
+		userName,a.user_sfzh
+		from user_dxc_53_record a where a.user_id
+		in
+		<foreach collection="array" item="user_id" separator="," open="(" close=")">
+			#{user_id}
+		</foreach>
+		(1,2,3,4)
+	</select>
+
+
+	<!-- 功能：动态语句，详见教材30页 -->
+	<update id="update_user_Info_by_userId_userName_userSfzh_test_10_dxc_53"
+		parameterType="map">
+		UPDATE a
+		<set>
+			<if test="user_new_name !=null and user_new_name !=''">
+				a.user_name=#{user_new_name},
+			</if>
+			<if test="user_new_sfzh !=null and user_new_sfzh !=''">
+				a.user_sfzh=#{user_new_sfzh},
+			</if>
+		</set>
+		from user_dxc_53_record a
+		where 1=1
+		<!-- OGNL表达式：！=不等于，''空串 -->
+		<if test="user_old_id != null and user_old_id !='' ">
+			and a.user_id=#{user_old_id}
+		</if>
+
+		<if test="user_old_name !=null and user_old_name !=''">
+			and a.user_name=#{user_old_name}
+		</if>
+
+		<if test="user_old_sfzh !=null and user_old_sfzh != '' ">
+			and a.user_sfzh=#{user_old_sfzh}
+		</if>
+
+
+	</update>
+
+	<!-- 功能：定义，表的字段与pojo类的属性，绑定对应关系 -->
+	<resultMap type="ch01_01_get_user_count_dxc_53.User_dxc_53_record"
+		id="user_record_to_user_dxc_53_map">
+
+		<!-- column:表的字段名，property：类的属性名 -->
+		<result column="userId" property="user_id" />
+		<result column="userName" property="user_name" />
+	</resultMap>
+
+	<!-- 功能：演示当前数据表的字段名，与POJO类的属性名，不一致时，用resultMap属性来绑定对应关系 -->
+	<select id="getUserInfo_by_user_id_resultMap_test_09_dxc_53"
+		parameterType="int" resultMap="user_record_to_user_dxc_53_map">
+		select a.user_id as userId,a.user_name
+		as userName,a.user_sfzh
+		user_dxc_01_record a where
+		a.user_id=#{user_id}
+	</select>
+
+	<!-- 功能：插入新用户，到数据库。 -->
+	<insert id="insert_new_user_dxc_53_by_pojo" parameterType="ch01_01_get_user_count_dxc_53.User_dxc_53_record">
+		INSERT INTO [user_dxc_53_record]
+		([user_name],
+		[user_sfzh])
+		VALUES
+		(#{user_name}
+		,#{user_sfzh})
+	</insert>
+
+	<select id="getUserInfo_By_userId_userName_02_Map_dxc_53"
+		parameterType="map" resultType="ch01_01_get_user_count_dxc_53.User_dxc_53_record">
+		select * from user_dxc_53_record a
+		where a.user_id &gt;=
+		#{user_id_map} and
+		a.user_name like
+		'%'+#{user_name_map}+'%'
+	</select>
+	<!-- 功能：多条件单表查询，实现方式一：使用POJO类传入参数 -->
+	<!-- XML文档中不能使用><，需要转译，如何转译，百度查询 -->
+
+	<select id="getUserInfo_By_userId_userName_dxc_53"
+		parameterType="ch01_01_get_user_count_dxc_53.User_dxc_53_record"
+		resultType="ch01_01_get_user_count_dxc_53.User_dxc_53_record">
+		select * from user_dxc_53_record a
+		where a.user_id &gt;=
+		#{user_id} and
+		a.user_name like '%'+#{user_name}+'%'
+	</select>
+
+	<!-- 功能：获取用户数 --><!-- alt+/ 标签辅助 -->
+	<select id="get_user_count" resultType="int">
+
+		select count(1)
+		from
+		user_dxc_53_record
+
+
+	</select>
+	<!-- 功能：根据用户ID，获取用户信息 -->
+	<select id="get_UserInfo_By_UserId" parameterType="int"
+		resultType="ch01_01_get_user_count_dxc_53.User_dxc_53_record">
+
+		select * from user_dxc_53_record a
+		where
+		a.user_id=#{user_id}
+
+	</select>
+	<!-- 功能：查询全部用户信息 -->
+	<select id="get_UserInfo_all" resultType="ch01_01_get_user_count_dxc_53.User_dxc_53_record">
+
+		select * from
+		user_dxc_53_record a
+
+
+	</select>
+
+
+</mapper>

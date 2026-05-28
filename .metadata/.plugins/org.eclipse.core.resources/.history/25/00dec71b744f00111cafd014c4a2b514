@@ -1,0 +1,17 @@
+package ch08_04_AspectJ_proxy_dxc_53;
+
+public class MyAspect_dxc_53 {
+	
+	public static void before(){
+		System.out.println("---------前增强---------");
+	}
+	
+	public static void after(){
+		System.out.println("---------后增强---------");
+	}
+
+	public static void around(){
+		System.out.println("---------环绕增强---------");
+	}
+
+}

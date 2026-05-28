@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 映射处理器：将 URL 映射到处理器 bean 的名称 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/to_indexPage.action">to_indexpage_controller_dxc_53</prop>
+                <prop key="/to_indexPage.do">to_indexpage_controller_dxc_53</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 适配器：支持实现了 Controller 接口的处理器 -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
+    <!-- 处理器 Bean -->
+    <bean name="to_indexpage_controller_dxc_53"
+        class="ch11_03_SimpleUrlHandlerMapping_dxc_53.To_indexPage_controller_dxc_53" />
+
+</beans>

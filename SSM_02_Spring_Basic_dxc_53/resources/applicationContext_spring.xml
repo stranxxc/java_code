@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 第一步：配置目标类，转为bean -->
+	<!-- -->
+	<bean id="user_server_dxc_53"
+		class="ch08_04_AspectJ_proxy_dxc_53.User_server_dxc_53" />
+
+	<!-- 第二步：切面类，转化为bean -->
+	<bean id="myaspect_dxc_53" class="ch08_04_AspectJ_proxy_dxc_53.MyAspect_dxc_53" />
+
+	<aop:config>
+		<aop:aspect ref="myaspect_dxc_53">
+			<!-- 第3-2 -->
+			<aop:pointcut expression="execution(* ch08_04_AspectJ_proxy_dxc_53.User_server_dxc_53.*(..) )" id="my_pointcut_dxc_53"/>
+			
+			<aop:before method="before" pointcut-ref="my_pointcut_dxc_53"/>
+			
+			<aop:after method="after" pointcut-ref="my_pointcut_dxc_53"/>
+			
+			<aop:around method="around" pointcut-ref="my_pointcut_dxc_53"/>
+		</aop:aspect>
+	
+	</aop:config>
+</beans>

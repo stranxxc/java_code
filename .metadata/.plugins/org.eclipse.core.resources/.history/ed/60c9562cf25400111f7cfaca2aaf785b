@@ -1,0 +1,25 @@
+package ch11_02_mvc_01_BeanNameUrlHandlerMapping_dxc_53;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+//第四步，定义用户级处理器，handler
+//根据文档要求，当映射器handlerMapping，使用的是BeanNameUrlHandlerMapping时
+//要求用户级的处理器，只需实现Controll接口即可
+public class To_indexPage_controller_dxc_53 implements Controller {
+
+	//这是接口controller，要求实现的方法
+	public ModelAndView handleRequest(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		 ModelAndView modelAndView = new ModelAndView();
+		
+		 modelAndView.setViewName("/index.jsp")
+		 
+		return null;
+	}
+	
+}

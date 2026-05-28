@@ -1,0 +1,74 @@
+package ch07_Bean_Life_cycle_dxc_53;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+public class User_dxc_53 implements BeanNameAware, BeanFactoryAware, ApplicationContextAware,DisposableBean{
+	//这是DisposableBean接口要求实现的方法。功能是在容器销毁前执行一些工作
+	public void destroy() throws  Exception{
+		 System.out.println("-------第八步：容器关闭，销毁全部Bean-------");
+	}
+	
+	//这是初始化方法，主要完成诸如获取数据库连接等
+	public void initial_method_bean(){
+		 System.out.println("-------第六步：执行初始化方法-------");
+	}
+	
+    public void setApplicationContext(ApplicationContext cur_context)
+            throws BeansException {
+        this.context = cur_context;
+        System.out.println("-------第四步：获取ApplicationContext的地址->" + cur_context + "-------");
+    }
+
+    public void setBeanFactory(BeanFactory cur_bean_factory)
+            throws BeansException {
+        this.bean_factory = cur_bean_factory;
+        System.out.println("-------第三步：获取BeanFactory的地址->" + cur_bean_factory + "-------");
+    }
+
+    public void setBeanName(String cur_bean_name) {
+        System.out.println("-------第二步：获取BeanName->" + cur_bean_name + "-------");
+    }
+
+    ApplicationContext context;
+    String bean_name;
+    BeanFactory bean_factory;
+
+    String xing_ming;
+    int age;
+
+    public User_dxc_53() {
+    }
+
+    public User_dxc_53(String cur_xing_ming, int cur_age) {
+        this.xing_ming = cur_xing_ming;
+        this.age = cur_age;
+    }
+
+    public String toString_2() {
+        return "User_dxc_53 [xing_ming=" + xing_ming + ", age=" + age + "]";
+    }
+
+    public String getXing_ming() {
+        return xing_ming;
+    }
+
+    public void setXing_ming(String xing_ming) {
+        this.xing_ming = xing_ming;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+
+}

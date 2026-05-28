@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ch05_pageHelper_dxc_53.User_dxc_53_record_Mapper">
+
+	<!-- 功能：演示pageHelper插件的使用 -->
+	<select id="get_UserInfo_by_pageHelper_dxc_test_02" resultType="ch05_pageHelper_dxc_53.User_dxc_53_record">
+		select * from
+		user_dxc_53_record a
+		<!-- 因为使用分页插件，所以分页相关的关键字，直接删除。由插件自动增加 -->
+		<!-- 因为使用分页插件，理论上order by也可以不写。但是为了保证分页信息的绝对正确性，建议还是加上 -->
+		
+	</select>
+
+
+
+
+	<!-- 功能：获取总记录数，然后计算分页信息 -->
+	<select id="get_UserInfo_totalRowsNum_dxc" resultType="int"
+		parameterType="map">
+		select count(0) from
+		user_dxc_53_record a
+	</select>
+
+
+
+	<!-- 功能：分页查询用户 -->
+	<!-- 凡是分页查询，必须要有order by字段。fetch next 适用于sql server -->
+	<select id="get_UserInfo_by_curPage_dxc_test_01" resultType="ch05_pageHelper_dxc_53.User_dxc_53_record">
+		select * from
+		user_dxc_53_record a
+		order by a.user_id desc
+
+		offset((#{curPage}-1)*#{pageSize}) rows
+		fetch next #{pageSize} rows
+		only
+	</select>
+
+
+</mapper>

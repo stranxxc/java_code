@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.IEARProjectName=
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.altContextRoot=
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.contextRoot=/SSM_03_Spring_MVC_dxc_53
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.deployIsOverProject=false
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.deploymentPath=D\:\\apache-tomcat-8.5.100-mvc\\webapps\\SSM_03_Spring_MVC_dxc_53
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.isDeployed=true
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.isExploded=true
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.isUptoDate=true
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.noFileCopy=false
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.shouldBackup=false
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.shouldOverwrite=false
+tomcat7Server.SSM_03_Spring_MVC_dxc_53.type=WebDeployment

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name></display-name>
+	<!-- 定义servlet DispatcherServlet-->
+	<servlet>
+		<servlet-name>springMvc_dxc_53</servlet-name>
+		
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<!-- 定义映射部分 -->
+	<servlet-mapping>
+		<servlet-name>springMvc_dxc_53</servlet-name>
+		<url-pattern> / </url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>servlet_02_webservlet</servlet-name>
+		<servlet-class>ch11_01_servlet_demo_dxc_53.servlet_02_webservlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet_02_webservlet</servlet-name>
+		<!-- 关键：url-pattern 必须以 / 开头，与您访问的路径完全一致 -->
+		<url-pattern>/servlet/to_path</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>servlet_01_hello</servlet-name>
+		<servlet-class>ch11_01_servlet_demo_dxc_53.servlet_01_hello</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>servlet_01_hello</servlet-name>
+		<url-pattern>/servlet/servlet_01_hello.action</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

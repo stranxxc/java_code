@@ -1,0 +1,27 @@
+package ch07_Bean_Life_cycle_dxc_53;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+//这是一个测试程序。演示Spring中创建实例的过程。
+public class Test_01_Bean_cycle_dxc_53 {
+
+	public static void main(String[] args) {
+		System.out.println("-------第一步：开始创建spring容器-------");
+		// 以下代码，是由Spring负责对象的创建，即Bean
+		String configLocation = "applicationContext_spring.xml";// Bean配置文件的文件名。
+		// 加载spring配置，完成bean的实例化。这个过程叫控制反转Ioc
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+				configLocation);
+		System.out.println("-------spring容器创建完毕！-------");
+		// 第一个bean，使用无参构造方式，实例化bean
+		// 详见教材93页，该方法来自于BeanFactory工厂
+		User_dxc_53 user_01_bean = (User_dxc_53) context
+				.getBean("user_01_bean");
+		System.out.println("-------Bean使用完毕！-------");
+		System.out.println("Bean_01-无参构造方式-实例化Bean->dxc"
+				+ user_01_bean.toString_2());
+	}
+	
+
+	
+}

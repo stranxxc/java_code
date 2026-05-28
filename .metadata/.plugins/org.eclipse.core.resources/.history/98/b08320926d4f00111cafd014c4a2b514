@@ -1,0 +1,66 @@
+package ch08_03_ProxyFactoryBean_proxy_dxc_53;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+//这是一个测试程序。演示Spring中创建实例的过程。
+public class Test_01_user_instance_setter_di_dxc_53 {
+
+	public static void main(String[] args) {
+		// 以下代码，由程序创建主动实例化一个类的实例
+		User_dxc_53 user_01 = new User_dxc_53();
+
+		user_01.setXing_ming("张三");
+		user_01.setAge(20);
+
+		User_dxc_53 user_02 = new User_dxc_53();
+
+		user_02.setXing_ming("李四");
+		user_02.setAge(18);
+
+		// 以下代码，是由Spring负责对象的创建，即Bean
+		String configLocation = "applicationContext_spring.xml";// Bean配置文件的文件名。
+		// 加载spring配置，完成bean的实例化。这个过程叫控制反转Ioc
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+				configLocation);
+
+		// 第一个bean，使用无参构造方式，实例化bean
+		// 详见教材93页，该方法来自于BeanFactory工厂
+		User_dxc_53 user_01_bean = (User_dxc_53) context
+				.getBean("user_01_bean");
+
+		System.out.println("Bean_01-无参构造方式-实例化Bean->dxc"
+				+ user_01_bean.toString_2());
+
+		// 第2个bean，使用有参构造方式，实例化bean
+		// 详见教材93页，该方法来自于BeanFactory工厂
+		User_dxc_53 user_02_bean = (User_dxc_53) context
+				.getBean("user_02_bean");
+
+		System.out.println("Bean_02-有参构造方式-实例化Bean->dxc"
+				+ user_02_bean.toString_2());
+		
+		//第三个bean，使用静态工厂方式，实例化bean
+		User_dxc_53 user_03_bean = (User_dxc_53) context
+				.getBean("user_03_bean");
+
+		System.out.println("Bean_03-静态工厂方式-实例化Bean->dxc"
+				+ user_03_bean.toString_2());
+	
+		
+		User_dxc_53 user_04_bean = (User_dxc_53) context
+				.getBean("user_04_bean");
+
+		System.out.println("Bean_04-实例工厂方式-实例化Bean->dxc"
+				+ user_04_bean.toString_2());
+
+		User_dxc_53 user_05_bean = (User_dxc_53) context
+				.getBean("user_05_bean");
+
+		System.out.println("Bean_05-实例工厂方式-实例化Bean->dxc"
+				+ user_05_bean.toString_2());vb
+
+	}
+	
+
+	
+}

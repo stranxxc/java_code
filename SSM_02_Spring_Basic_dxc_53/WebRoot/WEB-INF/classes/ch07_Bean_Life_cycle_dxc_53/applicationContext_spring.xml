@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.study.spring.sample.config"></context:component-scan>
+
+	<!-- 第一个bean，使用的是无参构造方式，实例化Bean -->
+	<bean id="user_01_bean" class="ch07_Bean_Life_cycle_dxc_53.User_dxc_53" init-method="initial_method_bean">
+		<property name="xing_ming" value="张三_01_bean_无参构造方式——实例化" />
+		<property name="age" value="22" />
+	</bean>
+	<!-- 这是一个增强器，在bean执行initali初始化方法的前后，对bean进行前后增强 -->
+	<bean id="my_bean_post_processor_dxc_53" class="ch07_Bean_Life_cycle_dxc_53.My_Bean_Post_Processor_dxc_53"/>
+
+
+</beans>

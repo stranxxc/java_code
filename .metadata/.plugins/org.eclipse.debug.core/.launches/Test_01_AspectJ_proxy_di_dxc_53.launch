@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/SSM_02_Spring_Basic_dxc_53/src/ch08_04_AspectJ_proxy_dxc_53/Test_01_AspectJ_proxy_di_dxc_53.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="ch08_04_AspectJ_proxy_dxc_53.Test_01_AspectJ_proxy_di_dxc_53"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="SSM_02_Spring_Basic_dxc_53"/>
+</launchConfiguration>

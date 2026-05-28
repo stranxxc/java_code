@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.study.spring.sample.config"></context:component-scan>
+
+	<!-- 第一个bean，使用的是无参构造方式，实例化Bean -->
+	<bean id="user_01_bean" class="ch06_spring_Ioc_DI_dxc_53.User_dxc_53">
+		<property name="xing_ming" value="张三_01_bean_无参构造方式——实例化" />
+		<property name="age" value="22" />
+	</bean>
+
+	<!-- 第2个bean，使用的是有参构造方式，实例化Bean -->
+	<bean id="user_02_bean" class="ch06_spring_Ioc_DI_dxc_53.User_dxc_53">
+		<constructor-arg name="cur_xing_ming" value="张三_02_bean_有参构造方式_实例化" />
+		<constructor-arg name="cur_age" value="23" />
+	</bean>
+
+	<!-- 第3个bean，使用的是静态工厂方式来实例化bean -->
+	<bean id="user_03_bean" class="ch06_spring_Ioc_DI_dxc_53.Beans_static_Factory_dxc_53"
+		factory-method="getUser_03_Bean" />
+
+	<!-- 第4个bean，使用的是实例工厂方式来实例化bean -->
+	<!-- 第一步：先创建实例工厂bean（必须指定class属性） -->
+	<bean id="bean_instance_factory" class="ch06_spring_Ioc_DI_dxc_53.Bean_instance_Factory_dxc_53"/>
+	
+	<!-- 第二步：通过实例工厂bean创建目标bean -->
+	<bean id="user_04_bean" factory-bean="bean_instance_factory"
+		factory-method="getUser_04_Bean" scope="singleton"/>
+
+</beans>

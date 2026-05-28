@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    
+    <settings>
+    	<setting name="logImpl" value="LOG4J" />
+    </settings>
+    
+    <!-- 环境配置 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+            <!-- 使用的是全限定名 -->
+                <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+                <property name="url" value="jdbc:sqlserver://localhost:1433;database=db_java_ssm_dxc_53"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    
+    <!-- 映射器配置 -->
+    <mappers>
+    <!-- 对同一个映射文件，使用resource或接口方式，导入时，二选一 -->
+        <mapper resource="ch01_01_get_user_count_dxc_53/User_dxc_53_record_Mapper.xml"/>
+        <!-- 或者使用 class 属性指定映射器接口 -->
+        <!-- <mapper class="com.example.YourMapperInterface"/> -->
+    </mappers>
+    
+</configuration>

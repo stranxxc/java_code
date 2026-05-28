@@ -1,0 +1,13 @@
+package ch11_04_annotation_dxc_53;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class To_indexPage_controllert_dxc_53 {
+	
+	public void to_index_01(){
+		String to_path="/index.jsp";
+		System.out.println("基于注解开发->dxc");
+		return to_path;
+	}
+}

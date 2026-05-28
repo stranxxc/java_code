@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 第一步：配置目标类，转为bean -->
+	<!-- -->
+	<bean id="user_server_dxc_53"
+		class="ch08_03_ProxyFactoryBean_proxy_dxc_53.User_server_dxc_53" />
+
+	<!-- 第二步：切面类，转化为bean -->
+	<bean id="myaspect_dxc_53" class="ch08_03_ProxyFactoryBean_proxy_dxc_53.MyAspect_dxc_53" />
+
+	<!-- 第三步：代理类，用的proxyF -->
+	<bean id="proxy_user_server_dxc_53" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!--the first -->
+		<!-- <property name="proxyInterfaces" value="" /> -->
+		<!--the second -->
+		<property name="target" ref="user_server_dxc_53" />
+		<!--the third -->
+		<property name="interceptorNames" value="myaspect_dxc_53" />
+		<!--the  -->
+		<property name="proxyTargetclass" value="true" />
+	</bean>
+	
+</beans>

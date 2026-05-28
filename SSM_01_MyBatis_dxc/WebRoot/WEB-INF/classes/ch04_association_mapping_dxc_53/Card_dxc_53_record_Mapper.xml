@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ch04_association_mapping_dxc_53.Card_dxc_53_record_Mapper">
+
+
+
+
+	<!-- 绑定用户信息to卡信息，一对多 -->
+	<resultMap
+		type="ch04_association_mapping_dxc_53.User_to_cards_one_two_dxc_53"
+		id="getCardsInfo_one_two_result_02_map">
+
+		<!-- 因为当前属性为类，所以用一对一映射 -->
+		<association property="user_dxc_53_record_Pojo"
+			javaType="ch04_association_mapping_dxc_53.User_dxc_53_record_Pojo">
+
+
+			<result property="user_id" column="user_id" />
+			<result property="user_name" column="user_name" />
+			<result property="user_sfzh" column="user_sfzh" />
+
+		</association>
+
+
+		<!-- 一对多，通过查询user_id列，再次查询卡表，获取卡信息 -->
+		<collection property="card_dxc_53_record_PoJo_list"
+			ofType="ch04_association_mapping_dxc_53.Card_dxc_53_record_PoJo">
+			
+			<result property="card_id" column="card_id"/>
+			<result property="card_no" column="card_no"/>
+			<result property="card_user_id" column="card_user_id"/>
+
+		</collection>
+	</resultMap>
+
+
+	<!-- 功能：一对多，嵌套结果，user_sfzh查询用户信息及卡信息，一对多 -->
+	<select id="getUserInfo_cardsInfo_by_userSFZH_one_two_test_04_result_dxc"
+		parameterType="String" resultMap="getCardsInfo_one_two_result_02_map">
+		SELECT
+		a.user_id,a.user_name,a.user_sfzh,b.card_id,b.card_no,b.card_user_id
+		FROM user_dxc_53_record a
+		left join card_dxc_53_record b on
+		a.user_id=b.card_user_id
+		where a.user_sfzh=#{user_sfzh}
+	</select>
+
+
+
+
+
+
+
+
+
+
+	<select id="getCardInfo_by_cardUserId_dxc_53" parameterType="int"
+		resultMap="ch04_association_mapping_dxc_53.Card_dxc_53_record_PoJo">
+		SELECT a.card_id
+		,a.card_no
+		,a.card_user_id,
+		FROM
+		card_dxc_53_record a
+		where
+		a.card_user_id=#{card_user_id}
+	</select>
+
+
+
+	<!-- 绑定用户信息to卡信息，一对多 -->
+	<resultMap
+		type="ch04_association_mapping_dxc_53.User_to_cards_one_two_dxc_53"
+		id="getCardsInfo_one_two_01_map">
+
+		<!-- 因为当前属性为类，所以用一对一映射 -->
+		<association property="user_dxc_53_record_Pojo"
+			javaType="ch04_association_mapping_dxc_53.User_dxc_53_record_Pojo">
+
+
+			<result property="user_id" column="user_id" />
+			<result property="user_name" column="user_name" />
+			<result property="user_sfzh" column="user_sfzh" />
+
+		</association>
+
+
+		<!-- 一对多，通过查询user_id列，再次查询卡表，获取卡信息 -->
+		<collection property="card_dxc_53_record_PoJo_list" column="user_id"
+			select="ch04_association_mapping_dxc_53.Card_dxc_53_record_Mapper.getCardInfo_by_cardUserId_dxc_53"
+			ofType="ch04_association_mapping_dxc_53.Card_dxc_53_record_PoJo">
+
+
+		</collection>
+	</resultMap>
+
+
+	<!-- 功能：通过身份证号，user_sfzh查询用户信息及卡信息，一对多 -->
+	<select id="getUserInfo_cardsInfo_by_userSFZH_one_two_test_03_dxc"
+		parameterType="String" resultMap="getCardsInfo_one_two_01_map">
+		SELECT user_id
+		,user_name
+		,user_sfzh
+		FROM user_dxc_53_record a
+		where
+		a.user_sfzh=#{user_sfzh}
+	</select>
+
+
+	<!-- 功能：嵌套查询，改为嵌套结果查询 -->
+	<!-- 功能：绑定卡信息与用户信息 -->
+	<resultMap type="ch04_association_mapping_dxc_53.Card_User_one_one_dxc_53"
+		id="getCard_user_Info_by_cardId_result_02_map">
+
+		<result property="card_id" column="card_id" />
+		<result property="card_no" column="card_no" />
+		<result property="card_user_id" column="card_user_id" />
+
+		<!-- 嵌套查询，而是直接绑定查询列与类属性之间的对应关系 -->
+		<association property="user_dxc_53_record_pojo"
+			javaType="ch04_association_mapping_dxc_53.Card_dxc_53_record_PoJo">
+
+			<result property="user_id" column="user_id" />
+			<result property="user_name" column="user_name" />
+			<result property="user_sfzh" column="user_sfzh" />
+
+		</association>
+	</resultMap>
+
+	<!-- 根据cardid,获取卡信息及相应的用户信息 -->
+	<!-- 修改点：resultType 改为 resultMap -->
+	<select id="getCard_user_Info_by_cardId_test_02_association_result_dxc_53"
+		parameterType="int" resultMap="getCard_user_Info_by_cardId_result_02_map">
+		SELECT TOP (1000) card_id
+		,card_no
+		,card_user_id,b.user_id,b.user_name,b.user_sfzh
+		FROM card_dxc_53_record
+		a
+		left join user_dxc_53_record b on a.card_user_id=b.user_id
+		where
+		a.card_id=#{card_id}
+	</select>
+
+
+
+
+	<select id="get_UserInfo_By_UserId" parameterType="int"
+		resultType="ch04_association_mapping_dxc_53.Card_dxc_53_record_PoJo">
+		SELECT * FROM user_dxc_53_record a
+		where
+		a.user_id=#{user_id}
+	</select>
+
+	<!-- 功能：绑定卡信息与用户信息 -->
+	<resultMap type="ch04_association_mapping_dxc_53.Card_User_one_one_dxc_53"
+		id="getCard_user_Info_by_cardId_map">
+
+		<result property="card_id" column="card_id" />
+		<result property="card_no" column="card_no" />
+		<result property="card_user_id" column="card_user_id" />
+
+		<!-- 嵌套查询，功能是根据指定的字段，查询其他已定义的select语句 -->
+		<association property="user_dxc_53_record_pojo" column="card_user_id"
+			javaType="ch04_association_mapping_dxc_53.Card_dxc_53_record_PoJo"
+			select="ch04_association_mapping_dxc_53.Card_dxc_53_record_Mapper.get_UserInfo_By_UserId" />
+	</resultMap>
+
+	<!-- 根据cardid,获取卡信息及相应的用户信息 -->
+	<!-- 修改点：resultType 改为 resultMap -->
+	<select id="getCard_user_Info_by_cardId_test_01_association_select_dxc_53"
+		parameterType="int" resultMap="getCard_user_Info_by_cardId_map">
+		SELECT a.card_id,
+		a.card_no,
+		a.card_user_id
+		FROM
+		card_dxc_53_record a
+		WHERE a.card_id = #{card_id}
+	</select>
+
+	<!-- 根据cardid,获取卡信息 -->
+	<select id="getCardInfo_by_cardId_dxc_53" parameterType="int"
+		resultType="ch04_association_mapping_dxc_53.Card_dxc_53_record_PoJo">
+		SELECT a.card_id,
+		a.card_no,
+		a.card_user_id
+		FROM
+		card_dxc_53_record a
+		WHERE a.card_id = #{card_id}
+	</select>
+
+</mapper>

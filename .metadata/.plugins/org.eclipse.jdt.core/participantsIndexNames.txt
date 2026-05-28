@@ -1,0 +1,7 @@
+INDEX VERSION 1.126
+D:\work_space_ssm_dxc_53\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2965227098.index
+\SSM_01_MyBatis_dxc\src
+D:\work_space_ssm_dxc_53\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1296715208.index
+\SSM_02_Spring_Basic_dxc_53\src
+D:\work_space_ssm_dxc_53\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3035182877.index
+\SSM_03_Spring_MVC_dxc_53\src

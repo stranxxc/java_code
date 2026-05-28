@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 1. 属性配置 (如果有外部属性文件) -->
+    <!-- <properties resource="db.properties"/> -->
+
+    <!-- 2. 全局设置 (合并为一个标签，且必须在 environments 之前) -->
+    <settings>
+        <setting name="logImpl" value="LOG4J" />
+    </settings>
+
+    <!-- 3. 插件 (分页助手必须在 environments 之前) -->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="sqlserver2012" />
+        </plugin>
+    </plugins>
+
+    <!-- 4. 环境配置 (数据库连接信息) -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+                <property name="url" value="jdbc:sqlserver://localhost:1433;database=db_java_ssm_dxc_53" />
+                <property name="username" value="root" />
+                <property name="password" value="root" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 5. 映射器 -->
+    <mappers>
+        <mapper resource="ch05_pageHelper_dxc_53/User_dxc_53_record_Mapper.xml" />
+    </mappers>
+
+</configuration>

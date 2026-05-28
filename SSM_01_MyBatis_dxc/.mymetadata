@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SSM_01_MyBatis_dxc"
+  id="myeclipse.1773109749232"
+  context-root="/SSM_01_MyBatis_dxc"
+  j2ee-spec="5.0"
+  archive="SSM_01_MyBatis_dxc.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

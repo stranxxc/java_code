@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;User_dxc_53.java&apos; to &apos;SSM_03_Spring_MVC_dxc_53/src/ch11_04_annotation_dxc_53&apos;&#x0D;&#x0A;- Original project: &apos;SSM_02_Spring_Basic_dxc_53&apos;&#x0D;&#x0A;- Destination element: &apos;SSM_03_Spring_MVC_dxc_53/src/ch11_04_annotation_dxc_53&apos;&#x0D;&#x0A;- Original element: &apos;ch08_Java_reflect_dxc_53.User_dxc_53.java&apos;" description="Copy compilation unit" destination="=SSM_03_Spring_MVC_dxc_53/src&lt;ch11_04_annotation_dxc_53" element1="/src&lt;ch08_Java_reflect_dxc_53{User_dxc_53.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1779955000387" units="1" version="1.0"/>
+</session>

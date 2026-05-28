@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SSM_03_Spring_MVC_dxc_53/resources/applicationContext_spring.xml&apos; to &apos;spring_mvc_config_dxc.xml&apos;" description="Rename resource &apos;applicationContext_spring.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="resources/applicationContext_spring.xml" name="spring_mvc_config_dxc.xml" stamp="1779351065833" updateReferences="true"/>
+</session>
