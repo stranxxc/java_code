@@ -1,0 +1,12 @@
+package ch11_04_annotation_dxc_53;
+
+import org.springframework.stereotype.Controller;
+
+//这是用户级控制器，handler
+@Controller
+public class File_upload_controller_dxc {
+	
+	public String file_upload_server(){
+		return "/file_upload_mvc_dxc.jsp";
+	}
+}

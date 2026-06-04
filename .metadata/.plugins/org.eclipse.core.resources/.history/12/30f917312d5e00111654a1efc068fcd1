@@ -1,0 +1,8 @@
+package ch11_04_annotation_dxc_53;
+//这是用户级控制器，handler
+public class File_upload_controller_dxc {
+	
+	public void file_upload_server(){
+		return "";
+	}
+}

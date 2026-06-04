@@ -1,0 +1,17 @@
+package ch11_04_annotation_dxc_53;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.http.HttpRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+//这是用户级控制器，handler
+@Controller
+public class File_upload_controller_dxc {
+	@RequestMapping("/file_upload.do")
+	public String file_upload_server(String upload_user_name,HttpRequest request,HttpServletResponse response,HttpSession session){
+		return "/file_upload_mvc_dxc.jsp";
+	}
+}
